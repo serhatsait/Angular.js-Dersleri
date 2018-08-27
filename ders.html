@@ -7,18 +7,31 @@
     <script>
 
         var benimapp = angular.module("myapp", []);
-        benimapp.controller("mycontrol", function ($scope) {
-            $scope.isimler=["sait", "serhat", "pekediz", "adriana", "lima"];
+        benimapp.controller("mycontrol", function ($scope, $http) {
+
+            $http.get("http://jsonplaceholder.typicode.com/posts").then(function (response) {
+                $scope.veriler = response.data;
+            })
         });
 
     </script>
+    <style>
+        ul {
+            list-style-type: none;
+        }
+
+        li {
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid;
+            color: #345345;
+        }
+    </style>
 </head>
 <body ng-app="myapp" ng-controller="mycontrol">
-isim ara : <input type="text" ng-model="arama">
+
 <ul>
-    <li ng-repeat="isim in isimler | filter:arama">
-        {{isim}}
-    </li>
+    <li ng-repeat="veri in veriler">yorum : {{veri.body}}</li>
 </ul>
 
 </body>
