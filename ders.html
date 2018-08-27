@@ -9,7 +9,7 @@
         var benimapp = angular.module("myapp", []);
         benimapp.controller("mycontrol", function ($scope, $http) {
 
-            $http.get("http://jsonplaceholder.typicode.com/posts").then(function (response) {
+            $http.get("https://jsonplaceholder.typicode.com/posts").then(function (response) {
                 $scope.veriler = response.data;
             })
         });
@@ -23,15 +23,15 @@
         li {
             padding: 10px;
             margin: 10px;
-            border: 1px solid;
+            border: 1px solid darkcyan;
             color: #345345;
         }
     </style>
 </head>
 <body ng-app="myapp" ng-controller="mycontrol">
-
+search : <input type="search" ng-model="arama">
 <ul>
-    <li ng-repeat="veri in veriler">yorum : {{veri.body}}</li>
+    <li ng-repeat="veri in veriler | filter:arama | orderBy:'-id'">yorum : {{veri}}</li>
 </ul>
 
 </body>
