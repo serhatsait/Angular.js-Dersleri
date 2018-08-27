@@ -27,12 +27,18 @@
             color: #345345;
         }
     </style>
+    <style>
+        .deneme{
+            height: 200px;
+            width: 200px;
+        }
+    </style>
 </head>
 <body ng-app="myapp" ng-controller="mycontrol">
-search : <input type="search" ng-model="arama">
-<ul>
-    <li ng-repeat="veri in veriler | filter:arama | orderBy:'-id'">yorum : {{veri}}</li>
-</ul>
+
+<button ng-click="deger=deger+1">Deger Arttır</button>{{deger}}<br>
+<button ng-click="deger=deger-1">Deger Azalt</button><br>
+<div ng-style="deger==5 && {'color':'red','background':'black'}" class="deneme">deneme bir ders</div>
 
 </body>
 </html>
